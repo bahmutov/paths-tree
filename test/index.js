@@ -15,5 +15,8 @@ gt.test('single node', function () {
 		"foo": "bar"
 	};
 	var t = tree(paths);
+	console.log(t);
 	gt.object(t, 'result is an object');
+	gt.array(t.children, 'root node has children');
+	gt.equal(t.children[0].name, 'foo', 'has correct name');
 });
