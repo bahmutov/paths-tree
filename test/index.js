@@ -15,6 +15,18 @@ gt.test('single node', function () {
 		"foo": "bar"
 	};
 	var t = tree(paths);
+	// console.log(t);
+	gt.object(t, 'result is an object');
+	gt.array(t.children, 'root node has children');
+	gt.equal(t.children[0].name, 'foo', 'has correct name');
+});
+
+gt.test('two nodes', function () {
+	var paths = {
+		"foo": "bar",
+		"zee": "bar"
+	};
+	var t = tree(paths);
 	console.log(t);
 	gt.object(t, 'result is an object');
 	gt.array(t.children, 'root node has children');
