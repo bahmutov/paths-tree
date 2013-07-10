@@ -1,4 +1,25 @@
 var tree = require('../index').tree;
+var grab = require('../index').grabPart;
+
+gt.module('grab path part');
+
+gt.test('basics', function () {
+	var r = grab('foo');
+	gt.equal(r.part, 'foo');
+	gt.undefined(r.remaining);
+});
+
+gt.test('two parts', function () {
+	var r = grab('foo\\bar');
+	gt.equal(r.part, 'foo');
+	gt.equal(r.remaining, 'bar');
+});
+
+gt.test('three parts', function () {
+	var r = grab('foo\\bar\\zee');
+	gt.equal(r.part, 'foo');
+	gt.equal(r.remaining, 'bar\\zee');
+});
 
 gt.module('tree');
 
