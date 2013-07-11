@@ -1,4 +1,5 @@
 var check = require('check-types');
+var _ = require('lodash');
 var sep = '\\';
 
 function grabPart(path) {
@@ -34,7 +35,13 @@ function _insertIntoArray(children, path, value) {
 		children.push(node);
 	}
 	if (curr.remaining) {
-		_insertPath(node, curr.remaining);
+		_insertPath(node, curr.remaining, value);
+	} else {
+		if (check.isObject(value)) {
+			_.extend(node, value);
+		} else {
+			node.value = value;
+		}
 	}
 }
 
@@ -49,15 +56,10 @@ function _insertPath(tree, path, value) {
 
 	var curr = grabPart(path);
 	check.verifyString(curr.part, 'could not extract part from ' + path);
-	// console.log('curr part', curr.part);
-
-	// var next = grabPart(curr.remaining);
-	// check.verifyString(next.part, 'could not extract next part from ' + curr.remaining);
 
 	if (tree.name === curr.part) {
 		
 	} else {
-		// console.log('need to insert into', tree.children, 'path', path);
 		_insertIntoArray(tree.children, path, value);
 	}
 }

@@ -60,10 +60,13 @@ gt.test('two parts', function () {
 		'foo\\bar': 'a'
 	};
 	var t = tree(paths);
-	// console.log(t);
+	// console.log(JSON.stringify(t, null, 2));
 	gt.object(t, 'result is an object');
 	gt.array(t.children, 'root node has children');
 	gt.equal(t.children[0].name, 'foo', 'has correct name');
+
+	gt.equal(t.children[0].children[0].name, 'bar');
+	gt.equal(t.children[0].children[0].value, 'a');
 });
 
 gt.test('paths', function () {
