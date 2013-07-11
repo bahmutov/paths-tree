@@ -104,5 +104,12 @@ gt.test('complexity.json', function () {
 	var complexity = require(name);
 	// console.log(JSON.stringify(complexity, null, 2));
 	var t = tree(complexity);
+	// console.log(JSON.stringify(t, null, 2));
+});
+
+gt.test('coveage.json', function () {
+	var name = path.join(__dirname, 'coveage.json');
+	var json = require(name);
+	var t = tree(json);
 	console.log(JSON.stringify(t, null, 2));
-})
+});
