@@ -28,12 +28,13 @@ gt.test('basics', function () {
 });
 
 gt.test('empty', function () {
-	gt.empty(tree({}), 'returns empty tree on empty input');
+	var t = tree({});
+	gt.empty(t.name, 'returns empty name on empty input');
 });
 
 gt.test('single node', function () {
 	var paths = {
-		"foo": "bar"
+		'foo': 'bar'
 	};
 	var t = tree(paths);
 	// console.log(t);
@@ -44,12 +45,49 @@ gt.test('single node', function () {
 
 gt.test('two nodes', function () {
 	var paths = {
-		"foo": "bar",
-		"zee": "bar"
+		'foo': 'bar',
+		'zee': 'bar'
 	};
 	var t = tree(paths);
-	console.log(t);
+	// console.log(t);
 	gt.object(t, 'result is an object');
+	gt.array(t.children, 'root node has children');
+	gt.equal(t.children[0].name, 'foo', 'has correct name');
+});
+
+gt.test('two parts', function () {
+	var paths = {
+		'foo\\bar': 'a'
+	};
+	var t = tree(paths);
+	// console.log(t);
+	gt.object(t, 'result is an object');
+	gt.array(t.children, 'root node has children');
+	gt.equal(t.children[0].name, 'foo', 'has correct name');
+});
+
+gt.test('paths', function () {
+	var paths = {
+		'foo\\bar': 'a',
+		'foo\\zee': 'b'
+	};
+	var expected = {
+		name: 'foo',
+		children: [{
+			name: 'bar',
+			value: 'a',
+			children: []
+		}, {
+			name: 'zee',
+			value: 'b',
+			children: []
+		}]
+	};
+
+	var t = tree(paths);
+	// console.log(JSON.stringify(t, null, 2));
+	gt.object(t, 'result is an object');
+	gt.equal(t.name, '', 'empty root name');
 	gt.array(t.children, 'root node has children');
 	gt.equal(t.children[0].name, 'foo', 'has correct name');
 });
