@@ -1,5 +1,7 @@
 var tree = require('../index').tree;
 var grab = require('../index').grabPart;
+var fs = require('fs');
+var path = require('path');
 
 gt.module('grab path part');
 
@@ -94,3 +96,13 @@ gt.test('paths', function () {
 	gt.array(t.children, 'root node has children');
 	gt.equal(t.children[0].name, 'foo', 'has correct name');
 });
+
+gt.module('real data');
+
+gt.test('complexity.json', function () {
+	var name = path.join(__dirname, 'complexity.json');
+	var complexity = require(name);
+	// console.log(JSON.stringify(complexity, null, 2));
+	var t = tree(complexity);
+	console.log(JSON.stringify(t, null, 2));
+})

@@ -1,0 +1,27 @@
+{
+  "c:\\git\\js-complexity\\test\\amd\\withamd.js": {
+    "loc": 7,
+    "cyclomatic": 1,
+    "halstead": 5
+  },
+  "c:\\git\\js-complexity\\test\\amd\\withoutamd.js": {
+    "loc": 6,
+    "cyclomatic": 1,
+    "halstead": 3
+  },
+  "c:\\git\\js-complexity\\test\\complexitytest.js": {
+    "loc": 22,
+    "cyclomatic": 1,
+    "halstead": 9
+  },
+  "c:\\git\\js-complexity\\test\\filenames.js": {
+    "loc": 20,
+    "cyclomatic": 1,
+    "halstead": 10
+  },
+  "c:\\git\\js-complexity\\test\\prefix.js": {
+    "loc": 29,
+    "cyclomatic": 1,
+    "halstead": 14
+  }
+}
