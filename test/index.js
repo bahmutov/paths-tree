@@ -2,6 +2,7 @@ var tree = require('../index').tree;
 var grab = require('../index').grabPart;
 var fs = require('fs');
 var path = require('path');
+var _ = require('lodash');
 
 gt.module('grab path part');
 
@@ -107,9 +108,18 @@ gt.test('complexity.json', function () {
 	// console.log(JSON.stringify(t, null, 2));
 });
 
-gt.test('coveage.json', function () {
-	var name = path.join(__dirname, 'coveage.json');
+gt.test('coverage.json', function () {
+	var name = path.join(__dirname, 'coverage.json');
 	var json = require(name);
 	var t = tree(json);
-	console.log(JSON.stringify(t, null, 2));
+	// console.log(JSON.stringify(t, null, 2));
+});
+
+gt.test('complexity and coverage', function () {
+	var complexity = require(path.join(__dirname, 'complexity.json'));
+	var coverage = require(path.join(__dirname, 'coverage.json'));
+	_.merge(complexity, coverage);
+	// console.log(JSON.stringify(complexity, null, 2));
+	var t = tree(complexity);
+	// console.log(JSON.stringify(t, null, 2));
 });
