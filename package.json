@@ -1,7 +1,7 @@
 {
   "name": "paths-tree",
   "description": "Creates tree of objects from a collection of file paths",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "bugs": {
     "url": "https://github.com/bahmutov/paths-tree/issues"
