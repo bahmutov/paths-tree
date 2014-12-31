@@ -58,7 +58,7 @@ function _insertPath(tree, path, value) {
 	check.verifyString(curr.part, 'could not extract part from ' + path);
 
 	if (tree.name === curr.part) {
-		
+		console.log('current path');
 	} else {
 		_insertIntoArray(tree.children, path, value);
 	}
@@ -67,14 +67,14 @@ function _insertPath(tree, path, value) {
 function tree(paths) {
 	check.verifyObject(paths, 'expected paths object');
 
-	var tree = new TreeNode('');
+	var tr = new TreeNode('');
 
 	Object.keys(paths).forEach(function (path) {
 		var props = paths[path];
-		_insertPath(tree, path, props);
+		_insertPath(tr, path, props);
 	});
 
-	return tree;
+	return tr;
 }
 
 module.exports.tree = tree;
