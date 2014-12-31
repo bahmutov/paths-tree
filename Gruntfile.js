@@ -11,11 +11,17 @@ module.exports = function(grunt) {
         jshintrc: '.jshintrc',
         reporter: require('jshint-summary')
       }
+    },
+
+    gt: {
+      tests: {
+        src: ['test/index.js']
+      }
     }
   });
 
   var plugins = require('matchdep').filterDev('grunt-*');
   plugins.forEach(grunt.loadNpmTasks);
 
-  grunt.registerTask('default', ['nice-package', 'jshint']);
+  grunt.registerTask('default', ['nice-package', 'jshint', 'gt']);
 };
